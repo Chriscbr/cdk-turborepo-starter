@@ -1,0 +1,25 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "display": "CDK package",
+    "extends": "./base.json",
+    "compilerOptions": {
+      "lib": ["ES2018"],
+      "module": "commonjs",
+      "target": "ES2018",
+      "composite": true,
+      "rootDir": "../..",
+      "baseUrl": "../..",
+      "paths": {
+        "web-constructs": ["packages/web-constructs"]
+      },
+      "resolveJsonModule": true,
+      "esModuleInterop": true
+    },
+    "exclude": [
+      "node_modules",
+      "cdk.out",
+      "**/*.test.ts"
+    ],
+    "include": ["../../**/*.ts"]
+  }
+  

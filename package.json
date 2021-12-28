@@ -1,0 +1,56 @@
+{
+  "name": "turborepo-cdk-basic",
+  "version": "0.0.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:update": "turbo run test:update",
+    "cdk:deploy": "npm run --prefix apps/cdk cdk deploy",
+    "cdk:diff": "npm run --prefix apps/cdk cdk diff",
+    "cdk:destroy": "npm run --prefix apps/cdk cdk destroy",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "turbo": {
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ],
+        "outputs": [
+          "dist/**",
+          ".next/**",
+          "out/**",
+          "cdk.out/**"
+        ]
+      },
+      "test": {
+        "outputs": []
+      },
+      "test:update": {
+        "outputs": []
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      }
+    }
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  }
+}
